@@ -1,27 +1,12 @@
-# As this an ongoing situation, frequent changes in the data format may occur, please visit the package news to get updates about those changes
+devtools::install_github("RamiKrispin/coronavirus")
 install.packages("coronavirus")
 library(coronavirus)
-# library(digest)
-# Install the Github version (refreshed on a daily bases):
-# install.packages("devtools")
-devtools::install_github("RamiKrispin/coronavirus")
 
+# Dataset coronavirus
 #1. Input dan apa yang mau dicari dari data
-#2. Total keseluruhan kasus confirm di indonesia
-#3. Total keseluruhan kasus di indonesia per hari
-#4. Membuat vis kasus kumulatif konfirmed
-#5. Membuat vis dari nomor 3
-#6. Persentase ratio dari death and recovery
-
-# Dataset coronavirus #
-#1. Input dan apa yang mau dicari dari data
-library(coronavirus)
 update_dataset()
-
 data("coronavirus")
 coronavirus
-head(coronavirus) # data teratas
-tail(coronavirus) # data terbawah
 
 library(dplyr)
 glimpse(coronavirus)
@@ -68,9 +53,6 @@ View(pivot_cases_indonesia_day)
 df <- as.data.frame(pivot_cases_indonesia_day)
 
 #4. Membuat vis kasus kumulatif konfirmed
-# Trend Line Indonesia
-# Using pivot_cases_indonesia_day, draw a line plot cum_confirm vs. date
-# Add a smooth trend line using linear regression, no error bars
 library(ggplot2)
 ggplot(df, aes (x=date, y=cum_confirm))+
   geom_line()+
